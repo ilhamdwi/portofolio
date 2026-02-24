@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profesional | Ilham Dwi Prasetyo Nugroho</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-bg: #0a0a0c;
+            --secondary-bg: #111116;
+            --accent-color: #ffb400; 
+            --whatsapp-green: #25d366;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.6; }
+
+        /* POPUP SALAM PEMBUKA 30 DETIK */
+        #welcomePopup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: flex; justify-content: center;
+            align-items: center; z-index: 9999; backdrop-filter: blur(10px);
+        }
+        .popup-content {
+            background: var(--secondary-bg); padding: 40px; border-radius: 20px;
+            border: 2px solid var(--accent-color); text-align: center;
+            max-width: 500px; position: relative; box-shadow: 0 0 30px rgba(255, 180, 0, 0.3);
+        }
+        .timer-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin-top: 20px; border-radius: 2px; overflow: hidden; }
+        .timer-progress { width: 100%; height: 100%; background: var(--accent-color); animation: timer-shrink 30s linear forwards; }
+        @keyframes timer-shrink { from { width: 100%; } to { width: 0%; } }
+
+        /* FLOATING WHATSAPP */
+        .wa-float { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background: var(--whatsapp-green); color: white; border-radius: 50px; text-align: center; font-size: 30px; z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .wa-float:hover { transform: scale(1.1); filter: brightness(1.1); }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 10%; position: sticky; top: 0; background: rgba(10, 10, 12, 0.95); z-index: 100; border-bottom: 1px solid var(--glass); }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--accent-color); letter-spacing: 2px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-color); }
+
+        header { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%); }
+        h1 { font-size: 3.5rem; background: linear-gradient(to right, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .hero-sub { color: var(--accent-color); font-weight: bold; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+
+        section { padding: 80px 10%; border-bottom: 1px solid var(--glass); }
+        .section-title { font-size: 2.2rem; margin-bottom: 50px; border-left: 5px solid var(--accent-color); padding-left: 20px; text-transform: uppercase; }
+
+        /* DETAILED EXPERIENCE */
+        .exp-item { margin-bottom: 60px; padding-left: 30px; border-left: 1px solid var(--accent-color); position: relative; }
+        .exp-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 11px; height: 11px; background: var(--accent-color); border-radius: 50%; }
+        .exp-date { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; }
+        .exp-role { font-size: 1.6rem; font-weight: 700; color: #fff; display: block; margin: 5px 0; }
+        .exp-company { font-size: 1.1rem; color: #ddd; font-style: italic; margin-bottom: 15px; display: block; }
+        .job-detail-list { list-style: none; margin-top: 15px; }
+        .job-detail-list li { background: var(--secondary-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--glass); margin-bottom: 10px; color: var(--text-dim); }
+        .job-detail-list strong { color: var(--accent-color); display: block; margin-bottom: 5px; }
+
+        /* GRID SYSTEM (PROJECTS & CERTS) */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--secondary-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--glass); transition: 0.4s; height: 100%; }
+        .card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+        .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 15px; }
+        .issuer { color: var(--accent-color); font-weight: bold; font-size: 0.75rem; text-transform: uppercase; border: 1px solid rgba(255,180,0,0.3); padding: 2px 8px; border-radius: 4px; }
+        .tag { font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #eee; padding: 3px 8px; border-radius: 4px; margin-right: 5px; }
+
+        footer { padding: 60px 10%; text-align: center; background: #050505; }
+        .socials a { color: #fff; font-size: 2rem; margin: 0 20px; transition: 0.3s; }
+        .socials a:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) { h1 { font-size: 2.2rem; } .nav-links { display: none; } section { padding: 60px 5%; } }
+    </style>
+</head>
+<body>
+
+    <div id="welcomePopup">
+        <div class="popup-content">
+            <span style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:24px;" onclick="closePopup()">&times;</span>
+            <h2 style="color: var(--accent-color); margin-bottom: 10px;">Halo, Selamat Datang!</h2>
+            <p>Saya <strong>Ilham Dwi Prasetyo Nugroho</strong>. Terima kasih telah berkunjung. Silakan eksplorasi seluruh riwayat kerja, proyek, dan sertifikasi profesional saya di sini.</p>
+            <div class="timer-bar"><div class="timer-progress"></div></div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/6287812768917" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav>
+        <div class="logo">IDPN.DEV</div>
+        <div class="nav-links">
+            <a href="#experience">Pengalaman</a>
+            <a href="#projects">Proyek</a>
+            <a href="#certificates">Sertifikat</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-sub">System Developer & Data Enthusiast</div>
+        <h1>Ilham Dwi Prasetyo Nugroho</h1>
+        <p style="color: var(--text-dim); max-width: 700px;">Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem dan akurasi data.</p>
+    </header>
+
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+
+        <div class="exp-item">
+            <span class="exp-date">Februari 2024 - Desember 2024</span>
+            <span class="exp-role">Backend Developer & Data Analyst</span>
+            <span class="exp-company">Kemendikbudristek RI (via PT Borobudur Indonesia Maju - Outsource)</span>
+            <ul class="job-detail-list">
+                <li>
+                    <strong>Project: Sistem Verval PTK (Nasional)</strong>
+                    Optimasi backend menggunakan Node.js dan SQL Server untuk manajemen jutaan data pendidik nasional. Meningkatkan performa query database dan kecepatan validasi data PTK.
+                </li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <span class="exp-date">September - November 2025</span>
+            <span class="exp-role">Fullstack Developer</span>
+            <span class="exp-company">SMAS Islam PB Soedirman 2 Bekasi</span>
+            <ul class="job-detail-list">
+                <li>
+                    <strong>Project: Official School Website</strong>
+                    Membangun website profil sekolah menggunakan PHP, MySQL, dan JS dengan fitur CMS internal untuk pengelolaan konten akademik.
+                </li>
+                <li>
+                    <strong>Project: PPDB Online System</strong>
+                    Mengembangkan sistem pendaftaran siswa baru secara digital (fullstack) untuk mempercepat verifikasi dokumen dan administrasi.
+                </li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <span class="exp-date">April - Juli 2025</span>
+            <span class="exp-role">IT Administrator</span>
+            <span class="exp-company">Oriskin Indonesia</span>
+            <ul class="job-detail-list">
+                <li>
+                    <strong>Project: Database & CRM Optimization</strong>
+                    Optimasi database perusahaan untuk manajemen data pelanggan retail kecantikan berskala nasional.
+                </li>
+                <li>
+                    <strong>Project: Technical Support</strong>
+                    Maintenance infrastruktur jaringan, hardware, dan software guna meminimalkan downtime perusahaan.
+                </li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <span class="exp-date">Juli - Oktober 2023</span>
+            <span class="exp-role">Sales Engineering (Data Analyst)</span>
+            <span class="exp-company">PT Global Data Inspirasi</span>
+            <ul class="job-detail-list">
+                <li>
+                    <strong>Project: Sentiment Analysis Dashboard</strong>
+                    Implementasi dashboard menggunakan Looker Studio dan Elasticsearch untuk memproses data berita besar menjadi insight sentimen.
+                </li>
+                <li>
+                    <strong>Project: BI Tools Installation</strong>
+                    Deployment server untuk Apache Superset, Tableau, Grafana, dan Power BI bagi klien korporasi.
+                </li>
+            </ul>
+        </div>
+
+        <div class="exp-item" style="border-left: 1px solid transparent;">
+            <span class="exp-date">Agustus - November 2021</span>
+            <span class="exp-role">System Analyst (Internship)</span>
+            <span class="exp-company">KSO Terminal Petikemas Koja</span>
+            <ul class="job-detail-list">
+                <li>
+                    <strong>Project: Contingency Plan Billing System</strong>
+                    Perancangan dokumentasi UML, Flowchart, dan Flowmap untuk sistem penagihan cadangan operasional pelabuhan.
+                </li>
+                <li>
+                    <strong>Project: E-Questionnaire System</strong>
+                    Membangun aplikasi kuesioner digital berbasis PHP & MySQL untuk efisiensi pengambilan feedback stakeholder.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--secondary-bg);">
+        <h2 class="section-title">Special Projects</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Audio To Text CLI</h3>
+                <p>Otomatisasi transkripsi data kualitatif audio skala besar menggunakan Python Speech Recognition.</p>
+                <div><span class="tag">Python</span><span class="tag">Automation</span></div>
+            </div>
+            <div class="card">
+                <h3>Analisis Data COVID-19</h3>
+                <p>Visualisasi tren penyebaran pandemi di Indonesia dengan library Pandas dan Matplotlib.</p>
+                <div><span class="tag">Python</span><span class="tag">Data Analysis</span></div>
+            </div>
+            <div class="card">
+                <h3>Quality Assurance Docs</h3>
+                <p>Dokumentasi Test Case dan Test Scenario profesional sesuai standar operasional produk (SOP).</p>
+                <div><span class="tag">QA</span><span class="tag">SDLC</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2 class="section-title">All Certificates</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Desain Pembelajaran Abad Ke-21</h3>
+                <p>Penyelesaian Pelatihan AI Intensif selama 16 Jam Pembelajaran (JP).</p>
+                <span class="issuer">Microsoft Indonesia</span>
+            </div>
+            <div class="card">
+                <h3>Eksplorasi AI Siap Masa Depan</h3>
+                <p>Penggunaan Microsoft Tools untuk membangun ekosistem pembelajaran digital (2.5 JP).</p>
+                <span class="issuer">Microsoft Indonesia</span>
+            </div>
+            <div class="card">
+                <h3>Artificial Intelligence Tenaga Pendidik</h3>
+                <p>Implementasi AI untuk efisiensi pengajaran dan manajemen data (2.5 JP).</p>
+                <span class="issuer">Microsoft Indonesia</span>
+            </div>
+
+            <div class="card">
+                <h3>Basic Java for QA Part 1</h3>
+                <p>Pemrograman Java dasar untuk kebutuhan QA Automation.</p>
+                <span class="issuer">MySkill</span>
+            </div>
+            <div class="card">
+                <h3>Git Introduction</h3>
+                <p>Manajemen repositori dan version control sistem pengembangan software.</p>
+                <span class="issuer">MySkill</span>
+            </div>
+
+            <div class="card">
+                <h3>Python Fundamental for Data Science</h3>
+                <p>Dasar pemrograman Python untuk kebutuhan sains data profesional.</p>
+                <span class="issuer">DQLab</span>
+            </div>
+            <div class="card">
+                <h3>Python for Data Professional Beginner</h3>
+                <p>Implementasi Python dalam pengolahan data terstruktur.</p>
+                <span class="issuer">DQLab</span>
+            </div>
+            <div class="card">
+                <h3>Introduction Data Science with Python</h3>
+                <p>Pengenalan algoritma dan library data science.</p>
+                <span class="issuer">DQLab</span>
+            </div>
+
+            <div class="card">
+                <h3>Kelas Quality Assurance</h3>
+                <p>Kompetensi Manual Testing, Test Case, dan Bug Reporting.</p>
+                <span class="issuer">Habiskerja.com</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="margin-bottom: 20px;">Mari Berkolaborasi</h2>
+        <p style="color: var(--text-dim); margin-bottom: 30px;">Bekasi, Jawa Barat | +62 878-1276-8917</p>
+        <div class="socials">
+            <a href="mailto:ilhamdwinugroho87@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/ilhamdpn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ilhamdwi" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 50px; font-size: 0.8rem; color: #444;">&copy; 2026 Ilham Dwi Prasetyo Nugroho. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function closePopup() { document.getElementById('welcomePopup').style.display = 'none'; }
+        setTimeout(closePopup, 30000); // Popup tertutup otomatis setelah 30 detik
+    </script>
+
+</body>
+</html>
