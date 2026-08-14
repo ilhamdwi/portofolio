@@ -4,102 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Profesional | Ilham Dwi Prasetyo Nugroho</title>
+    
+    <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans for a modern, premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- LINKEDIN BADGE SCRIPT (Sesuai Permintaan) -->
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
     <style>
         :root {
-            --primary-bg: #0a0a0c;
-            --secondary-bg: #111116;
-            --accent-color: #ffb400; 
+            --primary-bg: #09090b; /* Darker, sleek zinc background */
+            --secondary-bg: #141417; /* Slightly lighter for cards */
+            --accent-color: #eab308; /* Premium subtle gold */
+            --accent-glow: rgba(234, 179, 8, 0.15);
             --whatsapp-green: #25d366;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #f4f4f5;
+            --text-dim: #a1a1aa;
+            --glass: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* POPUP SALAM PEMBUKA 30 DETIK */
+        /* POPUP SALAM PEMBUKA 30 DETIK - Modern Glass Modal */
         #welcomePopup {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: flex; justify-content: center;
-            align-items: center; z-index: 9999; backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.8); display: flex; justify-content: center;
+            align-items: center; z-index: 9999; backdrop-filter: blur(12px);
+            opacity: 1; transition: opacity 0.5s ease;
         }
         .popup-content {
-            background: var(--secondary-bg); padding: 40px; border-radius: 20px;
-            border: 2px solid var(--accent-color); text-align: center;
-            max-width: 500px; position: relative; box-shadow: 0 0 30px rgba(255, 180, 0, 0.3);
+            background: rgba(20, 20, 23, 0.85); padding: 50px 40px; border-radius: 24px;
+            border: 1px solid var(--glass); text-align: center;
+            max-width: 450px; position: relative; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+            transform: translateY(0); animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .timer-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin-top: 20px; border-radius: 2px; overflow: hidden; }
-        .timer-progress { width: 100%; height: 100%; background: var(--accent-color); animation: timer-shrink 30s linear forwards; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .timer-bar { width: 100%; height: 3px; background: var(--glass); margin-top: 30px; border-radius: 3px; overflow: hidden; }
+        .timer-progress { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-color), #fef08a); animation: timer-shrink 30s linear forwards; }
         @keyframes timer-shrink { from { width: 100%; } to { width: 0%; } }
 
         /* FLOATING WHATSAPP */
-        .wa-float { position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background: var(--whatsapp-green); color: white; border-radius: 50px; text-align: center; font-size: 30px; z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .wa-float:hover { transform: scale(1.1); filter: brightness(1.1); }
+        .wa-float { 
+            position: fixed; width: 55px; height: 55px; bottom: 30px; right: 30px; 
+            background: var(--whatsapp-green); color: white; border-radius: 50%; 
+            text-align: center; font-size: 28px; z-index: 1000; display: flex; 
+            align-items: center; justify-content: center; text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); 
+        }
+        .wa-float:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 10%; position: sticky; top: 0; background: rgba(10, 10, 12, 0.95); z-index: 100; border-bottom: 1px solid var(--glass); height: 80px; /* Menambahkan tinggi navbar yang konsisten */ }
-        
-        /* GAYA LOGO BARU (DENGAN GAMBAR) */
+        /* NAVBAR - Glassmorphism */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 10%; position: sticky; top: 0; 
+            background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 100; border-bottom: 1px solid var(--glass); height: 80px; 
+            transition: all 0.3s ease;
+        }
         .logo { display: flex; align-items: center; height: 100%; }
-        .logo-img { max-height: 60px; /* Menyesuaikan tinggi gambar logo agar pas */ width: auto; /* Mempertahankan rasio aspek */ }
+        .logo-img { max-height: 50px; width: auto; object-fit: contain; }
         
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { 
+            color: var(--text-dim); text-decoration: none; font-size: 0.85rem; 
+            font-weight: 600; letter-spacing: 1px; text-transform: uppercase; 
+            transition: 0.3s ease; position: relative;
+        }
+        .nav-links a:hover { color: var(--text-main); }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; 
+            bottom: -5px; left: 0; background-color: var(--accent-color); 
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
 
-        header { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%); }
-        h1 { font-size: 3.5rem; background: linear-gradient(to right, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
-        .hero-sub { color: var(--accent-color); font-weight: bold; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+        /* HERO SECTION */
+        header { 
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; padding: 0 10%; 
+            background: radial-gradient(circle at top center, rgba(30, 30, 35, 0.5) 0%, var(--primary-bg) 70%);
+            position: relative;
+        }
+        .hero-sub { 
+            color: var(--accent-color); font-weight: 700; letter-spacing: 5px; 
+            text-transform: uppercase; margin-bottom: 25px; font-size: 0.9rem;
+            background: rgba(234, 179, 8, 0.1); padding: 8px 20px; border-radius: 30px;
+            border: 1px solid rgba(234, 179, 8, 0.2);
+        }
+        h1 { 
+            font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            letter-spacing: -1px;
+        }
+        header p { color: var(--text-dim); max-width: 650px; font-size: 1.1rem; }
 
-        section { padding: 80px 10%; border-bottom: 1px solid var(--glass); }
-        .section-title { font-size: 2.2rem; margin-bottom: 50px; border-left: 5px solid var(--accent-color); padding-left: 20px; text-transform: uppercase; }
+        /* SECTIONS */
+        section { padding: 100px 10%; border-bottom: 1px solid var(--border-light); }
+        .section-title { 
+            font-size: 2.5rem; margin-bottom: 60px; font-weight: 800;
+            display: inline-block; position: relative; letter-spacing: -0.5px;
+        }
+        .section-title::after {
+            content: ''; position: absolute; left: 0; bottom: -10px;
+            width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px;
+        }
 
-        /* DETAILED EXPERIENCE */
-        .exp-item { margin-bottom: 60px; padding-left: 30px; border-left: 1px solid var(--accent-color); position: relative; }
-        .exp-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 11px; height: 11px; background: var(--accent-color); border-radius: 50%; }
-        .exp-date { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; }
-        .exp-role { font-size: 1.6rem; font-weight: 700; color: #fff; display: block; margin: 5px 0; }
-        .exp-company { font-size: 1.1rem; color: #ddd; font-style: italic; margin-bottom: 15px; display: block; }
-        .job-detail-list { list-style: none; margin-top: 15px; }
-        .job-detail-list li { background: var(--secondary-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--glass); margin-bottom: 10px; color: var(--text-dim); }
-        .job-detail-list strong { color: var(--accent-color); display: block; margin-bottom: 5px; }
+        /* DETAILED EXPERIENCE - Modern Timeline */
+        .exp-container { max-width: 900px; }
+        .exp-item { 
+            margin-bottom: 50px; padding-left: 40px; 
+            border-left: 2px solid var(--glass); position: relative; 
+            transition: all 0.3s ease;
+        }
+        .exp-item:hover { border-left-color: var(--accent-color); }
+        .exp-item::before { 
+            content: ''; position: absolute; left: -8px; top: 5px; 
+            width: 14px; height: 14px; background: var(--primary-bg); 
+            border: 2px solid var(--accent-color); border-radius: 50%; 
+            transition: all 0.3s ease;
+        }
+        .exp-item:hover::before { background: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
+        
+        .exp-date { color: var(--accent-color); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        .exp-role { font-size: 1.7rem; font-weight: 700; color: #fff; display: block; margin: 8px 0 2px; }
+        .exp-company { font-size: 1rem; color: var(--text-dim); font-weight: 400; margin-bottom: 20px; display: block; }
+        
+        .job-detail-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+        .job-detail-list li { 
+            background: var(--secondary-bg); padding: 20px 25px; border-radius: 16px; 
+            border: 1px solid var(--glass); color: #d4d4d8; font-size: 0.95rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .job-detail-list li:hover { transform: translateX(5px); border-color: rgba(255, 255, 255, 0.15); }
+        .job-detail-list strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.05rem; }
 
         /* GRID SYSTEM (PROJECTS & CERTS) */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--secondary-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--glass); transition: 0.4s; height: 100%; }
-        .card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-        .card h3 { color: #fff; margin-bottom: 10px; font-size: 1.2rem; }
-        .card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 15px; }
-        .issuer { color: var(--accent-color); font-weight: bold; font-size: 0.75rem; text-transform: uppercase; border: 1px solid rgba(255,180,0,0.3); padding: 2px 8px; border-radius: 4px; }
-        .tag { font-size: 0.7rem; background: rgba(255, 255, 255, 0.05); color: #eee; padding: 3px 8px; border-radius: 4px; margin-right: 5px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+        .card { 
+            background: var(--secondary-bg); padding: 35px 30px; border-radius: 20px; 
+            border: 1px solid var(--glass); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            height: 100%; display: flex; flex-direction: column;
+            position: relative; overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.03), transparent 40%);
+            opacity: 0; transition: opacity 0.3s; z-index: 0; pointer-events: none;
+        }
+        .card:hover::before { opacity: 1; }
+        .card:hover { 
+            border-color: rgba(234, 179, 8, 0.3); transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow); 
+        }
+        .card h3 { color: #fff; margin-bottom: 15px; font-size: 1.3rem; font-weight: 700; z-index: 1; }
+        .card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; z-index: 1; }
+        
+        .issuer { 
+            color: var(--primary-bg); background: var(--accent-color); font-weight: 700; 
+            font-size: 0.75rem; text-transform: uppercase; padding: 6px 12px; 
+            border-radius: 8px; display: inline-block; align-self: flex-start; z-index: 1;
+        }
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; z-index: 1; }
+        .tag { 
+            font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); color: #e4e4e7; 
+            padding: 6px 12px; border-radius: 20px; font-weight: 600; border: 1px solid var(--glass);
+        }
 
-        footer { padding: 60px 10%; text-align: center; background: #050505; }
-        .socials a { color: #fff; font-size: 2rem; margin: 0 20px; transition: 0.3s; }
-        .socials a:hover { color: var(--accent-color); }
+        /* FOOTER & CONTACT */
+        footer { padding: 80px 10% 40px; background: #050505; border-top: 1px solid var(--glass); display: flex; flex-direction: column; align-items: center; text-align: center;}
+        
+        /* Container untuk Badge LinkedIn */
+        .linkedin-badge-container { margin: 40px 0; display: flex; justify-content: center; width: 100%; min-height: 250px; }
+        
+        .socials { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
+        .socials a { 
+            color: var(--text-main); font-size: 1.5rem; width: 50px; height: 50px;
+            background: var(--secondary-bg); border: 1px solid var(--glass); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; 
+        }
+        .socials a:hover { 
+            color: var(--primary-bg); background: var(--accent-color); 
+            transform: translateY(-5px); border-color: var(--accent-color); 
+        }
 
-        @media (max-width: 768px) { h1 { font-size: 2.2rem; } .nav-links { display: none; } section { padding: 60px 5%; } .logo-img { max-height: 50px; } /* Sedikit lebih kecil di ponsel */ }
+        .copyright { font-size: 0.85rem; color: #52525b; font-weight: 500; }
+
+        @media (max-width: 768px) { 
+            h1 { font-size: 2.8rem; } 
+            .nav-links { display: none; } 
+            section { padding: 80px 5%; } 
+            .logo-img { max-height: 40px; } 
+            .card { padding: 25px; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Popup -->
     <div id="welcomePopup">
         <div class="popup-content">
-            <span style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:24px;" onclick="closePopup()">&times;</span>
-            <h2 style="color: var(--accent-color); margin-bottom: 10px;">Halo, Selamat Datang!</h2>
-            <p>Saya <strong>Ilham Dwi Prasetyo Nugroho</strong>. Terima kasih telah berkunjung. Silakan eksplorasi seluruh riwayat kerja, proyek, dan sertifikasi profesional saya di sini.</p>
+            <span style="position:absolute; top:20px; right:25px; cursor:pointer; font-size:24px; color: var(--text-dim);" onclick="closePopup()">&times;</span>
+            <h2 style="color: #fff; margin-bottom: 15px; font-weight: 800;">Halo, Selamat Datang!</h2>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">Saya <strong style="color: var(--accent-color);">Ilham Dwi Prasetyo Nugroho</strong>. Silakan eksplorasi portofolio, riwayat kerja, dan proyek profesional saya di sini.</p>
             <div class="timer-bar"><div class="timer-progress"></div></div>
         </div>
     </div>
 
-    <a href="https://wa.me/6285111305653" class="wa-float" target="_blank">
+    <!-- Floating WA -->
+    <a href="https://wa.me/6285111305653" class="wa-float" target="_blank" title="Hubungi via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Navbar -->
     <nav>
         <div class="logo">
             <img src="https://ibb.co.com/zhgfykDw" alt="Logo Ilham Dwi Prasetyo Nugroho" class="logo-img">
         </div>
-        
         <div class="nav-links">
             <a href="#experience">Pengalaman</a>
             <a href="#projects">Proyek</a>
@@ -108,118 +238,125 @@
         </div>
     </nav>
 
+    <!-- Header / Hero -->
     <header>
         <div class="hero-sub">System Developer & Data Enthusiast</div>
-        <h1>Ilham Dwi Prasetyo Nugroho</h1>
-        <p style="color: var(--text-dim); max-width: 700px;">Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem dan akurasi data.</p>
+        <h1>Ilham Dwi Prasetyo<br>Nugroho</h1>
+        <p>Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem operasional dan akurasi data.</p>
     </header>
 
+    <!-- Experience -->
     <section id="experience">
         <h2 class="section-title">Work Experience</h2>
+        <div class="exp-container">
+            
+            <div class="exp-item">
+                <span class="exp-date">Februari 2024 - Desember 2024</span>
+                <span class="exp-role">Backend Developer & Data Analyst</span>
+                <span class="exp-company">Kemendikbudristek RI (via PT Borobudur Indonesia Maju)</span>
+                <ul class="job-detail-list">
+                    <li>
+                        <strong>Sistem Verval PTK (Nasional)</strong>
+                        Optimasi backend menggunakan Node.js dan SQL Server untuk manajemen jutaan data pendidik nasional. Meningkatkan performa query database dan kecepatan validasi data PTK.
+                    </li>
+                </ul>
+            </div>
 
-        <div class="exp-item">
-            <span class="exp-date">Februari 2024 - Desember 2024</span>
-            <span class="exp-role">Backend Developer & Data Analyst</span>
-            <span class="exp-company">Kemendikbudristek RI (via PT Borobudur Indonesia Maju - Outsource)</span>
-            <ul class="job-detail-list">
-                <li>
-                    <strong>Project: Sistem Verval PTK (Nasional)</strong>
-                    Optimasi backend menggunakan Node.js dan SQL Server untuk manajemen jutaan data pendidik nasional. Meningkatkan performa query database dan kecepatan validasi data PTK.
-                </li>
-            </ul>
-        </div>
+            <div class="exp-item">
+                <span class="exp-date">September - November 2025</span>
+                <span class="exp-role">Fullstack Developer</span>
+                <span class="exp-company">SMAS Islam PB Soedirman 2 Bekasi</span>
+                <ul class="job-detail-list">
+                    <li>
+                        <strong>Official School Website</strong>
+                        Membangun website profil sekolah menggunakan PHP, MySQL, dan JS dengan fitur CMS internal untuk pengelolaan konten akademik.
+                    </li>
+                    <li>
+                        <strong>PPDB Online System</strong>
+                        Mengembangkan sistem pendaftaran siswa baru secara digital (fullstack) untuk mempercepat verifikasi dokumen dan administrasi.
+                    </li>
+                </ul>
+            </div>
 
-        <div class="exp-item">
-            <span class="exp-date">September - November 2025</span>
-            <span class="exp-role">Fullstack Developer</span>
-            <span class="exp-company">SMAS Islam PB Soedirman 2 Bekasi</span>
-            <ul class="job-detail-list">
-                <li>
-                    <strong>Project: Official School Website</strong>
-                    Membangun website profil sekolah menggunakan PHP, MySQL, dan JS dengan fitur CMS internal untuk pengelolaan konten akademik.
-                </li>
-                <li>
-                    <strong>Project: PPDB Online System</strong>
-                    Mengembangkan sistem pendaftaran siswa baru secara digital (fullstack) untuk mempercepat verifikasi dokumen dan administrasi.
-                </li>
-            </ul>
-        </div>
+            <div class="exp-item">
+                <span class="exp-date">April - Juli 2025</span>
+                <span class="exp-role">IT Administrator</span>
+                <span class="exp-company">Oriskin Indonesia</span>
+                <ul class="job-detail-list">
+                    <li>
+                        <strong>Database & CRM Optimization</strong>
+                        Optimasi database perusahaan untuk manajemen data pelanggan retail kecantikan berskala nasional.
+                    </li>
+                    <li>
+                        <strong>Technical Support</strong>
+                        Maintenance infrastruktur jaringan, hardware, dan software guna meminimalkan downtime perusahaan.
+                    </li>
+                </ul>
+            </div>
 
-        <div class="exp-item">
-            <span class="exp-date">April - Juli 2025</span>
-            <span class="exp-role">IT Administrator</span>
-            <span class="exp-company">Oriskin Indonesia</span>
-            <ul class="job-detail-list">
-                <li>
-                    <strong>Project: Database & CRM Optimization</strong>
-                    Optimasi database perusahaan untuk manajemen data pelanggan retail kecantikan berskala nasional.
-                </li>
-                <li>
-                    <strong>Project: Technical Support</strong>
-                    Maintenance infrastruktur jaringan, hardware, dan software guna meminimalkan downtime perusahaan.
-                </li>
-            </ul>
-        </div>
+            <div class="exp-item">
+                <span class="exp-date">Juli - Oktober 2023</span>
+                <span class="exp-role">Sales Engineering (Data Analyst)</span>
+                <span class="exp-company">PT Global Data Inspirasi</span>
+                <ul class="job-detail-list">
+                    <li>
+                        <strong>Sentiment Analysis Dashboard</strong>
+                        Implementasi dashboard menggunakan Looker Studio dan Elasticsearch untuk memproses data berita besar menjadi insight sentimen.
+                    </li>
+                    <li>
+                        <strong>BI Tools Installation</strong>
+                        Deployment server untuk Apache Superset, Tableau, Grafana, dan Power BI bagi klien korporasi.
+                    </li>
+                </ul>
+            </div>
 
-        <div class="exp-item">
-            <span class="exp-date">Juli - Oktober 2023</span>
-            <span class="exp-role">Sales Engineering (Data Analyst)</span>
-            <span class="exp-company">PT Global Data Inspirasi</span>
-            <ul class="job-detail-list">
-                <li>
-                    <strong>Project: Sentiment Analysis Dashboard</strong>
-                    Implementasi dashboard menggunakan Looker Studio dan Elasticsearch untuk memproses data berita besar menjadi insight sentimen.
-                </li>
-                <li>
-                    <strong>Project: BI Tools Installation</strong>
-                    Deployment server untuk Apache Superset, Tableau, Grafana, dan Power BI bagi klien korporasi.
-                </li>
-            </ul>
-        </div>
+            <div class="exp-item" style="border-left-color: transparent;">
+                <span class="exp-date">Agustus - November 2021</span>
+                <span class="exp-role">System Analyst (Internship)</span>
+                <span class="exp-company">KSO Terminal Petikemas Koja</span>
+                <ul class="job-detail-list">
+                    <li>
+                        <strong>Contingency Plan Billing System</strong>
+                        Perancangan dokumentasi UML, Flowchart, dan Flowmap untuk sistem penagihan cadangan operasional pelabuhan.
+                    </li>
+                    <li>
+                        <strong>E-Questionnaire System</strong>
+                        Membangun aplikasi kuesioner digital berbasis PHP & MySQL untuk efisiensi pengambilan feedback stakeholder.
+                    </li>
+                </ul>
+            </div>
 
-        <div class="exp-item" style="border-left: 1px solid transparent;">
-            <span class="exp-date">Agustus - November 2021</span>
-            <span class="exp-role">System Analyst (Internship)</span>
-            <span class="exp-company">KSO Terminal Petikemas Koja</span>
-            <ul class="job-detail-list">
-                <li>
-                    <strong>Project: Contingency Plan Billing System</strong>
-                    Perancangan dokumentasi UML, Flowchart, dan Flowmap untuk sistem penagihan cadangan operasional pelabuhan.
-                </li>
-                <li>
-                    <strong>Project: E-Questionnaire System</strong>
-                    Membangun aplikasi kuesioner digital berbasis PHP & MySQL untuk efisiensi pengambilan feedback stakeholder.
-                </li>
-            </ul>
         </div>
     </section>
 
-    <section id="projects" style="background: var(--secondary-bg);">
+    <!-- Projects -->
+    <section id="projects" style="background: var(--primary-bg);">
         <h2 class="section-title">Special Projects</h2>
         <div class="grid-container">
             <div class="card">
                 <h3>Audio To Text CLI</h3>
                 <p>Otomatisasi transkripsi data kualitatif audio skala besar menggunakan Python Speech Recognition.</p>
-                <div><span class="tag">Python</span><span class="tag">Automation</span></div>
+                <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span></div>
             </div>
             <div class="card">
                 <h3>Analisis Data COVID-19</h3>
                 <p>Visualisasi tren penyebaran pandemi di Indonesia dengan library Pandas dan Matplotlib.</p>
-                <div><span class="tag">Python</span><span class="tag">Data Analysis</span></div>
+                <div class="tags"><span class="tag">Python</span><span class="tag">Data Analysis</span></div>
             </div>
             <div class="card">
                 <h3>Quality Assurance Docs</h3>
                 <p>Dokumentasi Test Case dan Test Scenario profesional sesuai standar operasional produk (SOP).</p>
-                <div><span class="tag">QA</span><span class="tag">SDLC</span></div>
+                <div class="tags"><span class="tag">QA</span><span class="tag">SDLC</span></div>
             </div>
         </div>
     </section>
 
-    <section id="certificates">
-        <h2 class="section-title">All Certificates</h2>
+    <!-- Certificates -->
+    <section id="certificates" style="background: rgba(255,255,255,0.01);">
+        <h2 class="section-title">Certifications</h2>
         <div class="grid-container">
             <div class="card">
-                <h3>Desain Pembelajaran Abad Ke-21</h3>
+                <h3>Desain Pembelajaran Abad 21</h3>
                 <p>Penyelesaian Pelatihan AI Intensif selama 16 Jam Pembelajaran (JP).</p>
                 <span class="issuer">Microsoft Indonesia</span>
             </div>
@@ -229,14 +366,13 @@
                 <span class="issuer">Microsoft Indonesia</span>
             </div>
             <div class="card">
-                <h3>Artificial Intelligence Tenaga Pendidik</h3>
+                <h3>AI untuk Tenaga Pendidik</h3>
                 <p>Implementasi AI untuk efisiensi pengajaran dan manajemen data (2.5 JP).</p>
                 <span class="issuer">Microsoft Indonesia</span>
             </div>
-
             <div class="card">
                 <h3>Basic Java for QA Part 1</h3>
-                <p>Pemrograman Java dasar untuk kebutuhan QA Automation.</p>
+                <p>Pemrograman Java dasar untuk kebutuhan Quality Assurance Automation.</p>
                 <span class="issuer">MySkill</span>
             </div>
             <div class="card">
@@ -244,45 +380,70 @@
                 <p>Manajemen repositori dan version control sistem pengembangan software.</p>
                 <span class="issuer">MySkill</span>
             </div>
-
             <div class="card">
-                <h3>Python Fundamental for Data Science</h3>
-                <p>Dasar pemrograman Python untuk kebutuhan sains data profesional.</p>
+                <h3>Python for Data Science</h3>
+                <p>Dasar pemrograman Python untuk kebutuhan sains data profesional tingkat lanjut.</p>
                 <span class="issuer">DQLab</span>
             </div>
             <div class="card">
-                <h3>Python for Data Professional Beginner</h3>
-                <p>Implementasi Python dalam pengolahan data terstruktur.</p>
+                <h3>Python Data Pro Beginner</h3>
+                <p>Implementasi bahasa Python dalam proses pembersihan dan pengolahan data terstruktur.</p>
                 <span class="issuer">DQLab</span>
             </div>
             <div class="card">
-                <h3>Introduction Data Science with Python</h3>
-                <p>Pengenalan algoritma dan library data science.</p>
+                <h3>Intro to Data Science (Python)</h3>
+                <p>Pengenalan algoritma dasar dan library utama dalam ranah sains data.</p>
                 <span class="issuer">DQLab</span>
             </div>
-
             <div class="card">
                 <h3>Kelas Quality Assurance</h3>
-                <p>Kompetensi Manual Testing, Test Case, dan Bug Reporting.</p>
+                <p>Kompetensi eksekusi Manual Testing, perancangan Test Case, dan Bug Reporting.</p>
                 <span class="issuer">Habiskerja.com</span>
             </div>
         </div>
     </section>
 
+    <!-- Footer & Contact -->
     <footer id="contact">
-        <h2 style="margin-bottom: 20px;">Mari Berkolaborasi</h2>
-        <p style="color: var(--text-dim); margin-bottom: 30px;">Bekasi, Jawa Barat | +62 851-1130-5653</p>
-        <div class="socials">
-            <a href="mailto:ilhamdwinugroho87@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/ilhamdpn" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/ilhamdwi" target="_blank"><i class="fab fa-github"></i></a>
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: #fff;">Mari Berkolaborasi</h2>
+        <p style="color: var(--text-dim); margin-bottom: 10px;">Bekasi, Jawa Barat | +62 851-1130-5653</p>
+        
+        <!-- LINKEDIN BADGE CONTAINER -->
+        <!-- Pastikan data-vanity sesuai dengan username LinkedIn Anda (ilhamdpn) -->
+        <div class="linkedin-badge-container">
+            <div class="badge-base LI-profile-badge" data-locale="id_ID" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="ilhamdpn" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/ilhamdpn?trk=profile-badge"></a>
+            </div>
         </div>
-        <p style="margin-top: 50px; font-size: 0.8rem; color: #444;">&copy; 2026 Ilham Dwi Prasetyo Nugroho. All Rights Reserved.</p>
+
+        <div class="socials">
+            <a href="mailto:ilhamdwinugroho87@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/ilhamdpn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/ilhamdwi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        
+        <p class="copyright">&copy; 2026 Ilham Dwi Prasetyo Nugroho. All Rights Reserved.</p>
     </footer>
 
     <script>
-        function closePopup() { document.getElementById('welcomePopup').style.display = 'none'; }
-        setTimeout(closePopup, 30000); // Popup tertutup otomatis setelah 30 detik
+        // Logika Popup
+        const popup = document.getElementById('welcomePopup');
+        function closePopup() { 
+            popup.style.opacity = '0';
+            setTimeout(() => { popup.style.display = 'none'; }, 500);
+        }
+        setTimeout(closePopup, 30000); // Tertutup otomatis setelah 30 detik
+
+        // Efek hover cahaya (Glow Effect) pada Cards mengikuti kursor
+        document.querySelectorAll('.card').forEach(card => {
+            card.onmousemove = e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            }
+        });
     </script>
 
 </body>
