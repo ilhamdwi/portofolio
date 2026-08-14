@@ -13,14 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- LINKEDIN BADGE SCRIPT (Sesuai Permintaan) -->
+    <!-- LINKEDIN BADGE SCRIPT -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
     <style>
         :root {
-            --primary-bg: #09090b; /* Darker, sleek zinc background */
-            --secondary-bg: #141417; /* Slightly lighter for cards */
-            --accent-color: #eab308; /* Premium subtle gold */
+            --primary-bg: #09090b;
+            --secondary-bg: #141417;
+            --accent-color: #eab308;
             --accent-glow: rgba(234, 179, 8, 0.15);
             --whatsapp-green: #25d366;
             --text-main: #f4f4f5;
@@ -32,7 +32,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* POPUP SALAM PEMBUKA 30 DETIK - Modern Glass Modal */
+        /* POPUP SALAM PEMBUKA 30 DETIK */
         #welcomePopup {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.8); display: flex; justify-content: center;
@@ -62,7 +62,7 @@
         }
         .wa-float:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4); }
 
-        /* NAVBAR - Glassmorphism */
+        /* NAVBAR */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 0 10%; position: sticky; top: 0; 
@@ -71,7 +71,8 @@
             transition: all 0.3s ease;
         }
         .logo { display: flex; align-items: center; height: 100%; }
-        .logo-img { max-height: 50px; width: auto; object-fit: contain; }
+        /* Update pada logo-img: tambahan border-radius agar JPEG terlihat luwes */
+        .logo-img { max-height: 45px; width: auto; object-fit: contain; border-radius: 8px; }
         
         .nav-links { display: flex; gap: 2.5rem; }
         .nav-links a { 
@@ -119,7 +120,7 @@
             width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px;
         }
 
-        /* DETAILED EXPERIENCE - Modern Timeline */
+        /* DETAILED EXPERIENCE */
         .exp-container { max-width: 900px; }
         .exp-item { 
             margin-bottom: 50px; padding-left: 40px; 
@@ -183,7 +184,6 @@
         /* FOOTER & CONTACT */
         footer { padding: 80px 10% 40px; background: #050505; border-top: 1px solid var(--glass); display: flex; flex-direction: column; align-items: center; text-align: center;}
         
-        /* Container untuk Badge LinkedIn */
         .linkedin-badge-container { margin: 40px 0; display: flex; justify-content: center; width: 100%; min-height: 250px; }
         
         .socials { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
@@ -228,7 +228,8 @@
     <!-- Navbar -->
     <nav>
         <div class="logo">
-            <img src="https://ibb.co.com/zhgfykDw" alt="Logo Ilham Dwi Prasetyo Nugroho" class="logo-img">
+            <!-- MENGGUNAKAN RAW URL GITHUB AGAR GAMBAR BISA DIRENDER -->
+            <img src="https://raw.githubusercontent.com/ilhamdwi/portofolio/e0b9bfd27866c57ca86dee235112dc8cd34486b5/idpn.jpeg" alt="Logo Ilham Dwi Prasetyo Nugroho" class="logo-img">
         </div>
         <div class="nav-links">
             <a href="#experience">Pengalaman</a>
@@ -408,8 +409,6 @@
         <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: #fff;">Mari Berkolaborasi</h2>
         <p style="color: var(--text-dim); margin-bottom: 10px;">Bekasi, Jawa Barat | +62 851-1130-5653</p>
         
-        <!-- LINKEDIN BADGE CONTAINER -->
-        <!-- Pastikan data-vanity sesuai dengan username LinkedIn Anda (ilhamdpn) -->
         <div class="linkedin-badge-container">
             <div class="badge-base LI-profile-badge" data-locale="id_ID" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="ilhamdpn" data-version="v1">
                 <a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/ilhamdpn?trk=profile-badge"></a>
@@ -432,9 +431,9 @@
             popup.style.opacity = '0';
             setTimeout(() => { popup.style.display = 'none'; }, 500);
         }
-        setTimeout(closePopup, 30000); // Tertutup otomatis setelah 30 detik
+        setTimeout(closePopup, 30000);
 
-        // Efek hover cahaya (Glow Effect) pada Cards mengikuti kursor
+        // Efek hover cahaya (Glow Effect)
         document.querySelectorAll('.card').forEach(card => {
             card.onmousemove = e => {
                 const rect = card.getBoundingClientRect();
