@@ -8,47 +8,63 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     
-    <!-- Google Fonts: Plus Jakarta Sans for a modern, premium look -->
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono for Dev/Cyber vibe -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- LINKEDIN BADGE SCRIPT -->
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
     <style>
         :root {
-            --primary-bg: #09090b;
-            --secondary-bg: #141417;
-            --accent-color: #eab308;
-            --accent-glow: rgba(234, 179, 8, 0.15);
+            /* Cyber Security & Dev Color Palette */
+            --primary-bg: #050b14; /* Deep Navy/Slate */
+            --secondary-bg: #0a1324; /* Lighter Navy for Cards */
+            --accent-cyan: #0ea5e9; /* Cyber Blue */
+            --accent-green: #10b981; /* Terminal Green */
+            --accent-glow: rgba(14, 165, 233, 0.2);
             --whatsapp-green: #25d366;
-            --text-main: #f4f4f5;
-            --text-dim: #a1a1aa;
-            --glass: rgba(255, 255, 255, 0.08);
-            --border-light: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass: rgba(14, 165, 233, 0.08); /* Tinted glass */
+            --border-light: rgba(14, 165, 233, 0.15);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--primary-bg); 
+            /* Subtle hi-tech grid background */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main); 
+            line-height: 1.7; 
+            font-family: var(--font-main);
+            overflow-x: hidden; 
+        }
 
         /* POPUP SALAM PEMBUKA 30 DETIK */
         #welcomePopup {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: flex; justify-content: center;
+            background: rgba(3, 7, 18, 0.85); display: flex; justify-content: center;
             align-items: center; z-index: 9999; backdrop-filter: blur(12px);
             opacity: 1; transition: opacity 0.5s ease;
         }
         .popup-content {
-            background: rgba(20, 20, 23, 0.85); padding: 50px 40px; border-radius: 24px;
-            border: 1px solid var(--glass); text-align: center;
+            background: var(--secondary-bg); padding: 50px 40px; border-radius: 16px;
+            border: 1px solid var(--accent-cyan); text-align: center;
             max-width: 450px; position: relative; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
             transform: translateY(0); animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .timer-bar { width: 100%; height: 3px; background: var(--glass); margin-top: 30px; border-radius: 3px; overflow: hidden; }
-        .timer-progress { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-color), #fef08a); animation: timer-shrink 30s linear forwards; }
+        .timer-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin-top: 30px; border-radius: 4px; overflow: hidden; }
+        .timer-progress { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); animation: timer-shrink 30s linear forwards; }
         @keyframes timer-shrink { from { width: 100%; } to { width: 0%; } }
 
         /* FLOATING WHATSAPP */
@@ -66,43 +82,44 @@
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
             padding: 0 10%; position: sticky; top: 0; 
-            background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            z-index: 100; border-bottom: 1px solid var(--glass); height: 80px; 
+            background: rgba(5, 11, 20, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 100; border-bottom: 1px solid var(--border-light); height: 80px; 
             transition: all 0.3s ease;
         }
         .logo { display: flex; align-items: center; height: 100%; }
-        .logo-img { max-height: 45px; width: auto; object-fit: contain; border-radius: 8px; }
+        .logo-img { max-height: 45px; width: auto; object-fit: contain; border-radius: 8px; border: 1px solid var(--border-light); }
         
         .nav-links { display: flex; gap: 2.5rem; }
         .nav-links a { 
             color: var(--text-dim); text-decoration: none; font-size: 0.85rem; 
-            font-weight: 600; letter-spacing: 1px; text-transform: uppercase; 
+            font-family: var(--font-code); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; 
             transition: 0.3s ease; position: relative;
         }
-        .nav-links a:hover { color: var(--text-main); }
+        .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 8px var(--accent-glow); }
         .nav-links a::after {
             content: ''; position: absolute; width: 0; height: 2px; 
-            bottom: -5px; left: 0; background-color: var(--accent-color); 
+            bottom: -5px; left: 0; background-color: var(--accent-cyan); 
             transition: width 0.3s ease;
         }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover::after { width: 100%; box-shadow: 0 0 10px var(--accent-cyan); }
 
         /* HERO SECTION */
         header { 
             min-height: 80vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 0 10%; 
-            background: radial-gradient(circle at top center, rgba(30, 30, 35, 0.5) 0%, var(--primary-bg) 70%);
+            background: radial-gradient(circle at top center, rgba(14, 165, 233, 0.1) 0%, transparent 60%);
             position: relative;
         }
         .hero-sub { 
-            color: var(--accent-color); font-weight: 700; letter-spacing: 5px; 
-            text-transform: uppercase; margin-bottom: 25px; font-size: 0.9rem;
-            background: rgba(234, 179, 8, 0.1); padding: 8px 20px; border-radius: 30px;
-            border: 1px solid rgba(234, 179, 8, 0.2);
+            color: var(--accent-green); font-weight: 700; letter-spacing: 2px; 
+            font-family: var(--font-code); margin-bottom: 25px; font-size: 0.9rem;
+            background: rgba(16, 185, 129, 0.1); padding: 8px 20px; border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
         }
         h1 { 
             font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%); 
+            background: linear-gradient(135deg, #ffffff 10%, var(--accent-cyan) 80%); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
             letter-spacing: -1px;
         }
@@ -116,87 +133,93 @@
         }
         .section-title::after {
             content: ''; position: absolute; left: 0; bottom: -10px;
-            width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px;
+            width: 40px; height: 4px; background: var(--accent-cyan); border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-cyan);
         }
 
         /* DETAILED EXPERIENCE */
         .exp-container { max-width: 900px; }
         .exp-item { 
             margin-bottom: 50px; padding-left: 40px; 
-            border-left: 2px solid var(--glass); position: relative; 
+            border-left: 2px solid var(--border-light); position: relative; 
             transition: all 0.3s ease;
         }
-        .exp-item:hover { border-left-color: var(--accent-color); }
+        .exp-item:hover { border-left-color: var(--accent-cyan); }
         .exp-item::before { 
             content: ''; position: absolute; left: -8px; top: 5px; 
             width: 14px; height: 14px; background: var(--primary-bg); 
-            border: 2px solid var(--accent-color); border-radius: 50%; 
+            border: 2px solid var(--accent-cyan); border-radius: 50%; 
             transition: all 0.3s ease;
         }
-        .exp-item:hover::before { background: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); }
+        .exp-item:hover::before { background: var(--accent-cyan); box-shadow: 0 0 15px var(--accent-cyan); }
         
-        .exp-date { color: var(--accent-color); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        .exp-date { color: var(--accent-green); font-family: var(--font-code); font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
         .exp-role { font-size: 1.7rem; font-weight: 700; color: #fff; display: block; margin: 8px 0 2px; }
-        .exp-company { font-size: 1rem; color: var(--text-dim); font-weight: 400; margin-bottom: 20px; display: block; }
+        .exp-company { font-size: 1rem; color: var(--text-dim); font-weight: 400; margin-bottom: 20px; display: block; font-family: var(--font-code); }
         
         .job-detail-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
         .job-detail-list li { 
-            background: var(--secondary-bg); padding: 20px 25px; border-radius: 16px; 
-            border: 1px solid var(--glass); color: #d4d4d8; font-size: 0.95rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            background: var(--secondary-bg); padding: 20px 25px; border-radius: 12px; 
+            border: 1px solid var(--glass); color: var(--text-dim); font-size: 0.95rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .job-detail-list li:hover { transform: translateX(5px); border-color: rgba(255, 255, 255, 0.15); }
-        .job-detail-list strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.05rem; }
+        .job-detail-list li:hover { 
+            transform: translateX(5px); 
+            border-color: rgba(14, 165, 233, 0.4); 
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.3);
+        }
+        .job-detail-list strong { color: var(--accent-cyan); display: block; margin-bottom: 8px; font-size: 1.05rem; }
 
         /* GRID SYSTEM (PROJECTS & CERTS) */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
         .card { 
-            background: var(--secondary-bg); padding: 35px 30px; border-radius: 20px; 
+            background: var(--secondary-bg); padding: 35px 30px; border-radius: 16px; 
             border: 1px solid var(--glass); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             height: 100%; display: flex; flex-direction: column;
             position: relative; overflow: hidden;
         }
         .card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.03), transparent 40%);
+            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(14, 165, 233, 0.06), transparent 40%);
             opacity: 0; transition: opacity 0.3s; z-index: 0; pointer-events: none;
         }
         .card:hover::before { opacity: 1; }
         .card:hover { 
-            border-color: rgba(234, 179, 8, 0.3); transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 20px var(--accent-glow); 
+            border-color: var(--accent-cyan); transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow); 
         }
         .card h3 { color: #fff; margin-bottom: 15px; font-size: 1.3rem; font-weight: 700; z-index: 1; }
         .card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; z-index: 1; }
         
         .issuer { 
-            color: var(--primary-bg); background: var(--accent-color); font-weight: 700; 
-            font-size: 0.75rem; text-transform: uppercase; padding: 6px 12px; 
-            border-radius: 8px; display: inline-block; align-self: flex-start; z-index: 1;
+            color: var(--primary-bg); background: var(--accent-cyan); font-weight: 700; 
+            font-size: 0.75rem; font-family: var(--font-code); text-transform: uppercase; padding: 6px 12px; 
+            border-radius: 4px; display: inline-block; align-self: flex-start; z-index: 1;
         }
         .tags { display: flex; gap: 8px; flex-wrap: wrap; z-index: 1; }
         .tag { 
-            font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); color: #e4e4e7; 
-            padding: 6px 12px; border-radius: 20px; font-weight: 600; border: 1px solid var(--glass);
+            font-size: 0.75rem; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); 
+            padding: 6px 12px; border-radius: 4px; font-family: var(--font-code); font-weight: 600; 
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         /* FOOTER & CONTACT */
-        footer { padding: 80px 10% 40px; background: #050505; border-top: 1px solid var(--glass); display: flex; flex-direction: column; align-items: center; text-align: center;}
+        footer { padding: 80px 10% 40px; background: #020408; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; text-align: center;}
         
         .linkedin-badge-container { margin: 40px 0; display: flex; justify-content: center; width: 100%; min-height: 250px; }
         
         .socials { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
         .socials a { 
-            color: var(--text-main); font-size: 1.5rem; width: 50px; height: 50px;
-            background: var(--secondary-bg); border: 1px solid var(--glass); border-radius: 50%;
+            color: var(--accent-cyan); font-size: 1.5rem; width: 50px; height: 50px;
+            background: rgba(14, 165, 233, 0.05); border: 1px solid var(--border-light); border-radius: 12px;
             display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; 
         }
         .socials a:hover { 
-            color: var(--primary-bg); background: var(--accent-color); 
-            transform: translateY(-5px); border-color: var(--accent-color); 
+            color: var(--primary-bg); background: var(--accent-cyan); 
+            transform: translateY(-5px); box-shadow: 0 10px 20px var(--accent-glow); 
         }
 
-        .copyright { font-size: 0.85rem; color: #52525b; font-weight: 500; }
+        .copyright { font-size: 0.85rem; font-family: var(--font-code); color: var(--text-dim); }
 
         @media (max-width: 768px) { 
             h1 { font-size: 2.8rem; } 
@@ -213,8 +236,8 @@
     <div id="welcomePopup">
         <div class="popup-content">
             <span style="position:absolute; top:20px; right:25px; cursor:pointer; font-size:24px; color: var(--text-dim);" onclick="closePopup()">&times;</span>
-            <h2 style="color: #fff; margin-bottom: 15px; font-weight: 800;">Halo, Selamat Datang!</h2>
-            <p style="color: var(--text-dim); font-size: 0.95rem;">Saya <strong style="color: var(--accent-color);">Ilham Dwi Prasetyo Nugroho</strong>. Silakan eksplorasi portofolio, riwayat kerja, dan proyek profesional saya di sini.</p>
+            <h2 style="color: #fff; margin-bottom: 15px; font-weight: 800;">[ Akses Diterima ]</h2>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">Halo, saya <strong style="color: var(--accent-cyan);">Ilham Dwi Prasetyo Nugroho</strong>. Silakan eksplorasi portofolio, riwayat kerja, dan proyek profesional saya.</p>
             <div class="timer-bar"><div class="timer-progress"></div></div>
         </div>
     </div>
@@ -230,18 +253,18 @@
             <img src="https://raw.githubusercontent.com/ilhamdwi/portofolio/e0b9bfd27866c57ca86dee235112dc8cd34486b5/idpn.jpeg" alt="Logo Ilham Dwi Prasetyo Nugroho" class="logo-img">
         </div>
         <div class="nav-links">
-            <a href="#experience">Pengalaman</a>
-            <a href="#projects">Proyek</a>
-            <a href="#certificates">Sertifikat</a>
-            <a href="#contact">Kontak</a>
+            <a href="#experience">&lt;Pengalaman/&gt;</a>
+            <a href="#projects">&lt;Proyek/&gt;</a>
+            <a href="#certificates">&lt;Sertifikat/&gt;</a>
+            <a href="#contact">&lt;Kontak/&gt;</a>
         </div>
     </nav>
 
     <!-- Header / Hero -->
     <header>
-        <div class="hero-sub">System Developer & Data Enthusiast</div>
+        <div class="hero-sub">> System Developer & Data Enthusiast _</div>
         <h1>Ilham Dwi Prasetyo<br>Nugroho</h1>
-        <p>Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem operasional dan akurasi data.</p>
+        <p>Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem operasional, keamanan, dan akurasi data.</p>
     </header>
 
     <!-- Experience -->
@@ -250,117 +273,117 @@
         <div class="exp-container">
             
             <div class="exp-item">
-                <span class="exp-date">Mei 2026 - Sekarang[cite: 1]</span>
-                <span class="exp-role">Founder & Lead Backend Developer[cite: 1]</span>
-                <span class="exp-company">Kliksystem (Bekasi, Jawa Barat)[cite: 1]</span>
+                <span class="exp-date">Mei 2026 - Sekarang</span>
+                <span class="exp-role">Founder & Lead Backend Developer</span>
+                <span class="exp-company">@ Kliksystem (Bekasi, Jawa Barat)</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Custom Web & Academic Support[cite: 1]</strong>
-                        Mendirikan dan mengelola agensi digital yang berfokus pada pengembangan sistem web kustom serta layanan dukungan akademik profesional (Kliksystem.my.id)[cite: 1]. Mengelola seluruh siklus hidup pengembangan perangkat lunak (SDLC) dari perancangan database hingga tahap deployment guna menghasilkan aplikasi yang aman, responsif, dan teroptimasi[cite: 1].
+                        <strong>Custom Web & Academic Support</strong>
+                        Mendirikan dan mengelola agensi digital yang berfokus pada pengembangan sistem web kustom serta layanan dukungan akademik profesional (Kliksystem.my.id). Mengelola seluruh siklus hidup pengembangan perangkat lunak (SDLC) dari perancangan database hingga tahap deployment guna menghasilkan aplikasi yang aman, responsif, dan teroptimasi.
                     </li>
                     <li>
-                        <strong>Project Management & Operations[cite: 1]</strong>
-                        Menangani komunikasi klien secara menyeluruh (end-to-end) dan mengelola operasional bantuan akademik[cite: 1]. Termasuk penulisan riset dan optimasi naskah (Turnitin) untuk memastikan hasil yang bebas plagiarisme dan sepenuhnya memenuhi standar kepatuhan akademik[cite: 1].
+                        <strong>Project Management & Operations</strong>
+                        Menangani komunikasi klien secara menyeluruh (end-to-end) dan mengelola operasional bantuan akademik. Termasuk penulisan riset dan optimasi naskah (Turnitin) untuk memastikan hasil yang bebas plagiarisme dan sepenuhnya memenuhi standar kepatuhan akademik.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item">
-                <span class="exp-date">Januari 2026 - Sekarang[cite: 1]</span>
-                <span class="exp-role">Freelance Technical Writer - Academic Research & Thesis Documentation[cite: 1]</span>
-                <span class="exp-company">Remote[cite: 1]</span>
+                <span class="exp-date">Januari 2026 - Sekarang</span>
+                <span class="exp-role">Freelance Technical Writer</span>
+                <span class="exp-company">@ Remote</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Academic Technical Writing[cite: 1]</strong>
-                        Menyediakan dukungan penulisan teknis akademik secara komprehensif untuk naskah tesis PhD, mencakup penjabaran metodologi yang sistematis dan presentasi analisis data riset[cite: 1].
+                        <strong>Academic Technical Writing</strong>
+                        Menyediakan dukungan penulisan teknis akademik secara komprehensif untuk naskah tesis PhD, mencakup penjabaran metodologi yang sistematis dan presentasi analisis data riset.
                     </li>
                     <li>
-                        <strong>Manuscript Optimization[cite: 1]</strong>
-                        Menyempurnakan struktur narasi teknis, tabel, gambar, keterangan (caption), serta referensi silang (cross-references) guna meningkatkan kejelasan, kualitas, dan konsistensi di seluruh bab tesis[cite: 1].
+                        <strong>Manuscript Optimization</strong>
+                        Menyempurnakan struktur narasi teknis, tabel, gambar, keterangan (caption), serta referensi silang (cross-references) guna meningkatkan kejelasan, kualitas, dan konsistensi di seluruh bab tesis.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item">
-                <span class="exp-date">September 2025 - November 2025[cite: 1]</span>
-                <span class="exp-role">Freelance Fullstack Developer[cite: 1]</span>
-                <span class="exp-company">SMAS Islam PB Soedirman 2 Bekasi[cite: 1]</span>
+                <span class="exp-date">September 2025 - November 2025</span>
+                <span class="exp-role">Freelance Fullstack Developer</span>
+                <span class="exp-company">@ SMAS Islam PB Soedirman 2 Bekasi</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Official School Website Development[cite: 1]</strong>
-                        Mengembangkan dan memelihara situs web resmi institusi sekolah menggunakan PHP, MySQL, JavaScript, dan CSS untuk memperkuat ekosistem digital akademik[cite: 1].
+                        <strong>Official School Website Development</strong>
+                        Mengembangkan dan memelihara situs web resmi institusi sekolah menggunakan PHP, MySQL, JavaScript, dan CSS untuk memperkuat ekosistem digital akademik.
                     </li>
                     <li>
-                        <strong>PPDB Online System[cite: 1]</strong>
-                        Membangun dan merancang sistem Penerimaan Peserta Didik Baru (PPDB) online, mencakup perancangan skema database terstruktur, pengembangan logika backend, serta implementasi operasi CRUD yang efisien[cite: 1].
+                        <strong>PPDB Online System</strong>
+                        Membangun dan merancang sistem Penerimaan Peserta Didik Baru (PPDB) online, mencakup perancangan skema database terstruktur, pengembangan logika backend, serta implementasi operasi CRUD yang efisien.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item">
-                <span class="exp-date">April 2025 - Juli 2025[cite: 1]</span>
-                <span class="exp-role">IT Administrator Intern[cite: 1]</span>
-                <span class="exp-company">Oriskin Indonesia (Jakarta)[cite: 1]</span>
+                <span class="exp-date">April 2025 - Juli 2025</span>
+                <span class="exp-role">IT Administrator Intern</span>
+                <span class="exp-company">@ Oriskin Indonesia (Jakarta)</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Database & CRM Optimization[cite: 1]</strong>
-                        Mengoptimalkan fungsionalitas database perusahaan dan sistem CRM (Customer Relationship Management) guna mendukung keakuratan manajemen data pelanggan serta meningkatkan kelancaran operasional penjualan[cite: 1].
+                        <strong>Database & CRM Optimization</strong>
+                        Mengoptimalkan fungsionalitas database perusahaan dan sistem CRM (Customer Relationship Management) guna mendukung keakuratan manajemen data pelanggan serta meningkatkan kelancaran operasional penjualan.
                     </li>
                     <li>
-                        <strong>Technical & Infrastructure Support[cite: 1]</strong>
-                        Memberikan dukungan teknis secara menyeluruh untuk perangkat keras, perangkat lunak, dan pemeliharaan infrastruktur jaringan, serta secara rutin menyusun laporan teknis berkala[cite: 1].
+                        <strong>Technical & Infrastructure Support</strong>
+                        Memberikan dukungan teknis secara menyeluruh untuk perangkat keras, perangkat lunak, dan pemeliharaan infrastruktur jaringan, serta secara rutin menyusun laporan teknis berkala.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item">
-                <span class="exp-date">Maret 2024 - Januari 2025[cite: 1]</span>
-                <span class="exp-role">Contract Backend Developer[cite: 1]</span>
-                <span class="exp-company">Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi (Tangerang)[cite: 1]</span>
+                <span class="exp-date">Maret 2024 - Januari 2025</span>
+                <span class="exp-role">Contract Backend Developer</span>
+                <span class="exp-company">@ Kemendikbudristek (Tangerang)</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Verval PTK National System[cite: 1]</strong>
-                        Merancang dan mengembangkan arsitektur RESTful API menggunakan Node.js untuk menunjang sistem verifikasi dan validasi data pendidik berskala nasional (Verval PTK)[cite: 1].
+                        <strong>Verval PTK National System</strong>
+                        Merancang dan mengembangkan arsitektur RESTful API menggunakan Node.js untuk menunjang sistem verifikasi dan validasi data pendidik berskala nasional (Verval PTK).
                     </li>
                     <li>
-                        <strong>Database Management & Performance Tuning[cite: 1]</strong>
-                        Memelihara dan merancang skema database untuk menjamin pemrosesan jutaan data pendidik secara aman[cite: 1]. Berhasil mencatatkan peningkatan waktu respons query sebesar 20% melalui optimasi query SQL dan tuning performa database[cite: 1].
+                        <strong>Database Management & Performance Tuning</strong>
+                        Memelihara dan merancang skema database untuk menjamin pemrosesan jutaan data pendidik secara aman. Berhasil mencatatkan peningkatan waktu respons query sebesar 20% melalui optimasi query SQL dan tuning performa database.
                     </li>
                     <li>
-                        <strong>API Security & Documentation[cite: 1]</strong>
-                        Mengimplementasikan operasi CRUD dengan standar keamanan tinggi, melaksanakan pengujian API menggunakan Postman, serta menyusun dokumentasi spesifikasi teknis API menggunakan standar Swagger/OpenAPI[cite: 1].
+                        <strong>API Security & Documentation</strong>
+                        Mengimplementasikan operasi CRUD dengan standar keamanan tinggi, melaksanakan pengujian API menggunakan Postman, serta menyusun dokumentasi spesifikasi teknis API menggunakan standar Swagger/OpenAPI.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item">
-                <span class="exp-date">Juli 2023 - Oktober 2023[cite: 1]</span>
-                <span class="exp-role">Sales Engineering Intern[cite: 1]</span>
-                <span class="exp-company">PT. Global Data Inspirasi (Yogyakarta)[cite: 1]</span>
+                <span class="exp-date">Juli 2023 - Oktober 2023</span>
+                <span class="exp-role">Sales Engineering Intern</span>
+                <span class="exp-company">@ PT. Global Data Inspirasi (Yogyakarta)</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>Interactive Dashboard Development[cite: 1]</strong>
-                        Merancang dan mengimplementasikan dashboard real-time yang interaktif menggunakan Looker Studio dan Elasticsearch untuk memantau tren sentimen berita dalam skala nasional[cite: 1].
+                        <strong>Interactive Dashboard Development</strong>
+                        Merancang dan mengimplementasikan dashboard real-time yang interaktif menggunakan Looker Studio dan Elasticsearch untuk memantau tren sentimen berita dalam skala nasional.
                     </li>
                     <li>
-                        <strong>Automation CLI Application[cite: 1]</strong>
-                        Mengembangkan aplikasi Python berbasis Command Line Interface (CLI) untuk mengotomatisasi konversi format audio-ke-teks, guna mempercepat pemrosesan data kualitatif dalam skala besar[cite: 1].
+                        <strong>Automation CLI Application</strong>
+                        Mengembangkan aplikasi Python berbasis Command Line Interface (CLI) untuk mengotomatisasi konversi format audio-ke-teks, guna mempercepat pemrosesan data kualitatif dalam skala besar.
                     </li>
                 </ul>
             </div>
 
             <div class="exp-item" style="border-left-color: transparent;">
-                <span class="exp-date">September 2021 - November 2021[cite: 1]</span>
-                <span class="exp-role">System Analyst Intern[cite: 1]</span>
-                <span class="exp-company">KSO Terminal Petikemas Koja (Jakarta)[cite: 1]</span>
+                <span class="exp-date">September 2021 - November 2021</span>
+                <span class="exp-role">System Analyst Intern</span>
+                <span class="exp-company">@ KSO Terminal Petikemas Koja (Jakarta)</span>
                 <ul class="job-detail-list">
                     <li>
-                        <strong>System Documentation & Design[cite: 1]</strong>
-                        Menyusun dan menganalisis dokumentasi teknis sistem secara mendetail, meliputi pembuatan Flowmap, Flowchart, dan UML untuk mendukung sistem penagihan (billing system) contingency plan operasional[cite: 1].
+                        <strong>System Documentation & Design</strong>
+                        Menyusun dan menganalisis dokumentasi teknis sistem secara mendetail, meliputi pembuatan Flowmap, Flowchart, dan UML untuk mendukung sistem penagihan (billing system) contingency plan operasional.
                     </li>
                     <li>
-                        <strong>E-Questionnaire System Development[cite: 1]</strong>
-                        Membangun dan mendesain sistem e-questionnaire menggunakan PHP dan MySQL, yang mencakup perancangan skema database terintegrasi serta implementasi operasi CRUD yang dinamis[cite: 1].
+                        <strong>E-Questionnaire System Development</strong>
+                        Membangun dan mendesain sistem e-questionnaire menggunakan PHP dan MySQL, yang mencakup perancangan skema database terintegrasi serta implementasi operasi CRUD yang dinamis.
                     </li>
                 </ul>
             </div>
@@ -369,7 +392,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" style="background: var(--primary-bg);">
+    <section id="projects" style="background: rgba(10, 19, 36, 0.3);">
         <h2 class="section-title">Special Projects</h2>
         <div class="grid-container">
             <div class="card">
@@ -391,7 +414,7 @@
     </section>
 
     <!-- Certificates -->
-    <section id="certificates" style="background: rgba(255,255,255,0.01);">
+    <section id="certificates">
         <h2 class="section-title">Certifications</h2>
         <div class="grid-container">
             <div class="card">
@@ -445,7 +468,7 @@
     <!-- Footer & Contact -->
     <footer id="contact">
         <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: #fff;">Mari Berkolaborasi</h2>
-        <p style="color: var(--text-dim); margin-bottom: 10px;">Bekasi, Jawa Barat | +62 851-1130-5653</p>
+        <p style="color: var(--text-dim); margin-bottom: 10px; font-family: var(--font-code);">[ Lokasi: Bekasi, Jawa Barat ] | [ Phone: +62 851-1130-5653 ]</p>
         
         <div class="linkedin-badge-container">
             <div class="badge-base LI-profile-badge" data-locale="id_ID" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="ilhamdpn" data-version="v1">
@@ -471,7 +494,7 @@
         }
         setTimeout(closePopup, 30000);
 
-        // Efek hover cahaya (Glow Effect)
+        // Efek hover cahaya (Glow Effect) untuk cards
         document.querySelectorAll('.card').forEach(card => {
             card.onmousemove = e => {
                 const rect = card.getBoundingClientRect();
