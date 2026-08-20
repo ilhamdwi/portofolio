@@ -203,6 +203,37 @@
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
+        /* PORTFOLIO / PUBLICATION LINK CARDS */
+        .link-card {
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .link-card .card-category {
+            color: var(--accent-cyan);
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            z-index: 1;
+        }
+        .link-card .visit-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-green);
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 1;
+            margin-top: auto;
+        }
+        .link-card:hover .visit-link i { transform: translateX(4px); }
+        .link-card .visit-link i { transition: transform 0.3s ease; }
+
         /* FOOTER & CONTACT */
         footer { padding: 80px 10% 40px; background: #020408; border-top: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; text-align: center;}
         
@@ -255,6 +286,8 @@
         <div class="nav-links">
             <a href="#experience">&lt;Pengalaman/&gt;</a>
             <a href="#projects">&lt;Proyek/&gt;</a>
+            <a href="#portfolio">&lt;Portofolio/&gt;</a>
+            <a href="#publications">&lt;Publikasi/&gt;</a>
             <a href="#certificates">&lt;Sertifikat/&gt;</a>
             <a href="#contact">&lt;Kontak/&gt;</a>
         </div>
@@ -410,6 +443,110 @@
                 <p>Dokumentasi Test Case dan Test Scenario profesional sesuai standar operasional produk (SOP).</p>
                 <div class="tags"><span class="tag">QA</span><span class="tag">SDLC</span></div>
             </div>
+        </div>
+    </section>
+
+    <!-- Portfolio (Dashboard & Web Development) -->
+    <section id="portfolio">
+        <h2 class="section-title">Portofolio</h2>
+        <div class="grid-container">
+
+            <a class="card link-card" href="https://datastudio.google.com/u/0/reporting/b7f0d4c8-75ef-4ca3-965d-5909c24367c4/page/Fd00F" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Data Visualization &middot; Looker Studio</span>
+                <h3>ENR-CKD Patient Monitoring System</h3>
+                <p>Dashboard pemantauan pasien untuk mendukung analisis dan pengambilan keputusan klinis.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Looker Studio</span><span class="tag">Healthcare</span></div>
+                <span class="visit-link">Buka Dashboard <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://datastudio.google.com/reporting/f706b9d4-c077-4f8d-9031-0f55af28903d" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Data Visualization &middot; Looker Studio</span>
+                <h3>Global Electric Vehicle Dashboard</h3>
+                <p>Visualisasi data adopsi kendaraan listrik secara global untuk analisis tren pasar.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Looker Studio</span><span class="tag">EV Data</span></div>
+                <span class="visit-link">Buka Dashboard <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://ilhamdwi.github.io/alat-pecocok-cv/" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Web Development</span>
+                <h3>ATS Matcher Application</h3>
+                <p>Aplikasi pencocok CV berbasis ATS (Applicant Tracking System) untuk membantu pencari kerja.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">JavaScript</span><span class="tag">Web App</span></div>
+                <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://ilhamdwi.github.io/cv-tracer/" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Web Development</span>
+                <h3>CV Tracer Application</h3>
+                <p>Aplikasi pelacak status lamaran kerja untuk membantu pengguna mengelola proses pencarian kerja.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">JavaScript</span><span class="tag">Web App</span></div>
+                <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://smaipbsoedirman2bekasi.sch.id/" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Web Development</span>
+                <h3>School Information System</h3>
+                <p>Situs web resmi & sistem PPDB online untuk SMAS Islam PB Soedirman 2 Bekasi.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+                <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://www.kliksystem.my.id/" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Web Development</span>
+                <h3>Klik System</h3>
+                <p>Situs agensi digital untuk pengembangan sistem web kustom & dukungan akademik.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Fullstack</span><span class="tag">Agency</span></div>
+                <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" style="background: rgba(10, 19, 36, 0.3);">
+        <h2 class="section-title">Publikasi & Analisis Data</h2>
+        <div class="grid-container">
+
+            <a class="card link-card" href="https://ejournal.itn.ac.id/jati/article/view/6159" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Jurnal SINTA 4 &middot; JATI</span>
+                <h3>Analisis Perbandingan K-NN & Neural Network</h3>
+                <p>Studi perbandingan metode K-Nearest Neighbor dan Neural Network dalam penentuan rekomendasi layanan baru.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Machine Learning</span><span class="tag">Journal</span></div>
+                <span class="visit-link">Baca Artikel <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://books.google.co.id/books?hl=en&lr=&id=vqKaEAAAQBAJ&oi=fnd&pg=PA16&dq=info:5hWPuBHvXagJ:scholar.google.com&ots=4465ozMMFb&sig=-K3txvOLD-N9-BzzBxbmMG4YpQ0&redir_esc=y#v=onepage&q&f=false" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Buku</span>
+                <h3>Penerapan User Centered Design untuk Contingency Plan</h3>
+                <p>Buku mengenai penentuan sistem contingency plan menggunakan pendekatan User Centered Design.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">UCD</span><span class="tag">Book</span></div>
+                <span class="visit-link">Baca Buku <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://colab.research.google.com/drive/1kW_sE41VeVVLlka5cjDBUl5BY-UBxhvl" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Google Colab</span>
+                <h3>Operations Intelligence: SLA, Forecasting & Segmentation</h3>
+                <p>Analisis SLA, forecasting, dan segmentasi operasional menggunakan Python.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Python</span><span class="tag">Forecasting</span></div>
+                <span class="visit-link">Buka Notebook <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://colab.research.google.com/drive/1GbX_cYPTokKDCJ_5TvrQA_zGEbwQfPf_" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Google Colab</span>
+                <h3>Exploratory Data Analysis: Large-Scale Dataset</h3>
+                <p>Eksplorasi mendalam terhadap dataset skala besar untuk mengungkap pola dan insight utama.</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Python</span><span class="tag">EDA</span></div>
+                <span class="visit-link">Buka Notebook <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a class="card link-card" href="https://colab.research.google.com/drive/1o6ryJPa4_IChmqHHsAUIlfoEMNmBkSNz" target="_blank" rel="noopener noreferrer">
+                <span class="card-category">Google Colab</span>
+                <h3>New Service Detection using K-Nearest Neighbors</h3>
+                <p>Deteksi layanan baru menggunakan algoritma K-Nearest Neighbors (K-NN).</p>
+                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Python</span><span class="tag">K-NN</span></div>
+                <span class="visit-link">Buka Notebook <i class="fas fa-arrow-right"></i></span>
+            </a>
+
         </div>
     </section>
 
