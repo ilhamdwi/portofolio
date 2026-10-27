@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Profesional | Ilham Dwi Prasetyo Nugroho</title>
+    <title>Portofolio | Administrasi, Data & Sistem Informasi | Ilham Dwi Prasetyo Nugroho</title>
     
+    <meta name="description" content="Portofolio Ilham Dwi Prasetyo Nugroho: administrasi, data management, operasional, analisis data, dan sistem informasi.">
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     
@@ -64,7 +65,7 @@
         }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .timer-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin-top: 30px; border-radius: 4px; overflow: hidden; }
-        .timer-progress { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); animation: timer-shrink 30s linear forwards; }
+        .timer-progress { width: 100%; height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); animation: timer-shrink 5s linear forwards; }
         @keyframes timer-shrink { from { width: 100%; } to { width: 0%; } }
 
         /* FLOATING WHATSAPP */
@@ -252,9 +253,22 @@
 
         .copyright { font-size: 0.85rem; font-family: var(--font-code); color: var(--text-dim); }
 
+        .intro-copy { max-width: 850px; color: var(--text-dim); font-size: 1.05rem; }
+        .hero-actions { display:flex; gap: 12px; margin-top: 25px; flex-wrap:wrap; }
+        .primary-button, .secondary-button { display:inline-block; padding: 12px 20px; border-radius: 9px; text-decoration:none; font-weight:700; }
+        .primary-button { background:var(--accent-cyan); color:#06101d; }
+        .secondary-button { border:1px solid var(--accent-cyan); color:var(--text-main); }
+        .soft-section { background:rgba(10,19,36,.3); }
+        .education-card { max-width:650px; }
+        .education-card .card-category { color:var(--accent-cyan); font-weight:700; }
+        section, header, footer { scroll-margin-top: 80px; }
+        .nav-links { flex-wrap:wrap; justify-content:flex-end; gap:1rem; }
+        @media (max-width: 1100px) { nav {padding: 0 4%;} .nav-links {gap:.75rem;} .nav-links a {font-size:.68rem;} }
         @media (max-width: 768px) { 
             h1 { font-size: 2.8rem; } 
-            .nav-links { display: none; } 
+            .nav-links { display: flex; width:100%; overflow-x:auto; flex-wrap:nowrap; justify-content:flex-start; gap: 1rem; padding:10px 0; }
+            nav { height:auto; min-height:80px; flex-wrap:wrap; padding:12px 5%; }
+            .nav-links a { white-space: nowrap; font-size:.72rem; } 
             section { padding: 80px 5%; } 
             .logo-img { max-height: 40px; } 
             .card { padding: 25px; }
@@ -266,9 +280,9 @@
     <!-- Popup -->
     <div id="welcomePopup">
         <div class="popup-content">
-            <span style="position:absolute; top:20px; right:25px; cursor:pointer; font-size:24px; color: var(--text-dim);" onclick="closePopup()">&times;</span>
+            <span role="button" aria-label="Tutup pesan selamat datang" tabindex="0" style="position:absolute; top:20px; right:25px; cursor:pointer; font-size:24px; color: var(--text-dim);" onclick="closePopup()" onkeydown="if(event.key==='Enter'||event.key===' ')closePopup()">&times;</span>
             <h2 style="color: #fff; margin-bottom: 15px; font-weight: 800;">[ Akses Diterima ]</h2>
-            <p style="color: var(--text-dim); font-size: 0.95rem;">Halo, saya <strong style="color: var(--accent-cyan);">Ilham Dwi Prasetyo Nugroho</strong>. Silakan eksplorasi portofolio, riwayat kerja, dan proyek profesional saya.</p>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">Selamat datang. Saya <strong style="color: var(--accent-cyan);">Ilham Dwi Prasetyo Nugroho</strong>. Silakan eksplorasi portofolio, riwayat kerja, dan proyek profesional saya.</p>
             <div class="timer-bar"><div class="timer-progress"></div></div>
         </div>
     </div>
@@ -284,166 +298,100 @@
             <img src="https://raw.githubusercontent.com/ilhamdwi/portofolio/e0b9bfd27866c57ca86dee235112dc8cd34486b5/idpn.jpeg" alt="Logo Ilham Dwi Prasetyo Nugroho" class="logo-img">
         </div>
         <div class="nav-links">
-            <a href="#experience">&lt;Pengalaman/&gt;</a>
-            <a href="#projects">&lt;Proyek/&gt;</a>
-            <a href="#portfolio">&lt;Portofolio/&gt;</a>
-            <a href="#publications">&lt;Publikasi/&gt;</a>
-            <a href="#certificates">&lt;Sertifikat/&gt;</a>
-            <a href="#contact">&lt;Kontak/&gt;</a>
+            <a href="#about">Profil</a>
+            <a href="#experience">Pengalaman</a>
+            <a href="#skills">Keahlian</a>
+            <a href="#projects">Proyek</a>
+            <a href="#portfolio">Portofolio</a>
+            <a href="#publications">Publikasi</a>
+            <a href="#certificates">Sertifikat</a>
+            <a href="#contact">Kontak</a>
         </div>
     </nav>
 
     <!-- Header / Hero -->
     <header>
-        <div class="hero-sub">> System Developer & Data Enthusiast _</div>
+        <div class="hero-sub">ADMINISTRATION · DATA MANAGEMENT · INFORMATION SYSTEMS</div>
         <h1>Ilham Dwi Prasetyo<br>Nugroho</h1>
-        <p>Ahli dalam Backend Development, Data Analytics, dan Quality Assurance dengan fokus pada efisiensi sistem operasional, keamanan, dan akurasi data.</p>
+        <p>Lulusan D4 Teknik Informatika dengan pengalaman dalam administrasi, pengelolaan data, operasional bisnis, sistem informasi, dan pengembangan aplikasi. Terbuka untuk peluang profesional di bidang IT maupun non-IT.</p>
     </header>
 
-    <!-- Experience -->
-    <section id="experience">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="exp-container">
-            
-            <div class="exp-item">
-                <span class="exp-date">Mei 2026 - Sekarang</span>
-                <span class="exp-role">Founder & Lead Backend Developer</span>
-                <span class="exp-company">@ Kliksystem (Bekasi, Jawa Barat)</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Custom Web & Academic Support</strong>
-                        Mendirikan dan mengelola agensi digital yang berfokus pada pengembangan sistem web kustom serta layanan dukungan akademik profesional (Kliksystem.my.id). Mengelola seluruh siklus hidup pengembangan perangkat lunak (SDLC) dari perancangan database hingga tahap deployment guna menghasilkan aplikasi yang aman, responsif, dan teroptimasi.
-                    </li>
-                    <li>
-                        <strong>Project Management & Operations</strong>
-                        Menangani komunikasi klien secara menyeluruh (end-to-end) dan mengelola operasional bantuan akademik. Termasuk penulisan riset dan optimasi naskah (Turnitin) untuk memastikan hasil yang bebas plagiarisme dan sepenuhnya memenuhi standar kepatuhan akademik.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <span class="exp-date">Januari 2026 - Agustus 2026</span>
-                <span class="exp-role">Freelance Technical Writer</span>
-                <span class="exp-company">@ Remote</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Academic Technical Writing</strong>
-                        Menyediakan dukungan penulisan teknis akademik secara komprehensif untuk naskah tesis PhD, mencakup penjabaran metodologi yang sistematis dan presentasi analisis data riset.
-                    </li>
-                    <li>
-                        <strong>Manuscript Optimization</strong>
-                        Menyempurnakan struktur narasi teknis, tabel, gambar, keterangan (caption), serta referensi silang (cross-references) guna meningkatkan kejelasan, kualitas, dan konsistensi di seluruh bab tesis.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <span class="exp-date">September 2025 - November 2025</span>
-                <span class="exp-role">Freelance Fullstack Developer</span>
-                <span class="exp-company">@ SMAS Islam PB Soedirman 2 Bekasi</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Official School Website Development</strong>
-                        Mengembangkan dan memelihara situs web resmi institusi sekolah menggunakan PHP, MySQL, JavaScript, dan CSS untuk memperkuat ekosistem digital akademik.
-                    </li>
-                    <li>
-                        <strong>PPDB Online System</strong>
-                        Membangun dan merancang sistem Penerimaan Peserta Didik Baru (PPDB) online, mencakup perancangan skema database terstruktur, pengembangan logika backend, serta implementasi operasi CRUD yang efisien.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <span class="exp-date">April 2025 - Juli 2025</span>
-                <span class="exp-role">IT Administrator Intern</span>
-                <span class="exp-company">@ Oriskin Indonesia (Jakarta)</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Database & CRM Optimization</strong>
-                        Mengoptimalkan fungsionalitas database perusahaan dan sistem CRM (Customer Relationship Management) guna mendukung keakuratan manajemen data pelanggan serta meningkatkan kelancaran operasional penjualan.
-                    </li>
-                    <li>
-                        <strong>Technical & Infrastructure Support</strong>
-                        Memberikan dukungan teknis secara menyeluruh untuk perangkat keras, perangkat lunak, dan pemeliharaan infrastruktur jaringan, serta secara rutin menyusun laporan teknis berkala.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <span class="exp-date">Maret 2024 - Januari 2025</span>
-                <span class="exp-role">Contract Backend Developer</span>
-                <span class="exp-company">@ Kemendikbudristek (Tangerang)</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Verval PTK National System</strong>
-                        Merancang dan mengembangkan arsitektur RESTful API menggunakan Node.js untuk menunjang sistem verifikasi dan validasi data pendidik berskala nasional (Verval PTK).
-                    </li>
-                    <li>
-                        <strong>Database Management & Performance Tuning</strong>
-                        Memelihara dan merancang skema database untuk menjamin pemrosesan jutaan data pendidik secara aman. Berhasil mencatatkan peningkatan waktu respons query sebesar 20% melalui optimasi query SQL dan tuning performa database.
-                    </li>
-                    <li>
-                        <strong>API Security & Documentation</strong>
-                        Mengimplementasikan operasi CRUD dengan standar keamanan tinggi, melaksanakan pengujian API menggunakan Postman, serta menyusun dokumentasi spesifikasi teknis API menggunakan standar Swagger/OpenAPI.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item">
-                <span class="exp-date">Juli 2023 - Oktober 2023</span>
-                <span class="exp-role">Sales Engineering Intern</span>
-                <span class="exp-company">@ PT. Global Data Inspirasi (Yogyakarta)</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>Interactive Dashboard Development</strong>
-                        Merancang dan mengimplementasikan dashboard real-time yang interaktif menggunakan Looker Studio dan Elasticsearch untuk memantau tren sentimen berita dalam skala nasional.
-                    </li>
-                    <li>
-                        <strong>Automation CLI Application</strong>
-                        Mengembangkan aplikasi Python berbasis Command Line Interface (CLI) untuk mengotomatisasi konversi format audio-ke-teks, guna mempercepat pemrosesan data kualitatif dalam skala besar.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="exp-item" style="border-left-color: transparent;">
-                <span class="exp-date">September 2021 - November 2021</span>
-                <span class="exp-role">System Analyst Intern</span>
-                <span class="exp-company">@ KSO Terminal Petikemas Koja (Jakarta)</span>
-                <ul class="job-detail-list">
-                    <li>
-                        <strong>System Documentation & Design</strong>
-                        Menyusun dan menganalisis dokumentasi teknis sistem secara mendetail, meliputi pembuatan Flowmap, Flowchart, dan UML untuk mendukung sistem penagihan (billing system) contingency plan operasional.
-                    </li>
-                    <li>
-                        <strong>E-Questionnaire System Development</strong>
-                        Membangun dan mendesain sistem e-questionnaire menggunakan PHP dan MySQL, yang mencakup perancangan skema database terintegrasi serta implementasi operasi CRUD yang dinamis.
-                    </li>
-                </ul>
-            </div>
-
-        </div>
+    <!-- Professional overview -->
+    <section id="about">
+      <h2 class="section-title">Profil Profesional</h2>
+      <p class="intro-copy">Lulusan Sarjana Terapan (D4) Teknik Informatika dari Universitas Logistik Bisnis Internasional (2023), dengan pengalaman di bidang administrasi, manajemen data, operasional bisnis, sistem informasi, dan pengembangan proyek. Terbiasa menyusun laporan, menjaga kualitas data, memahami kebutuhan pemangku kepentingan, dan mendukung proses kerja lintas fungsi.</p>
+      <div class="hero-actions"><a class="primary-button" href="mailto:ilhamdwinugroho87@gmail.com?subject=Peluang%20Kerja%20-%20Ilham%20Dwi%20Prasetyo%20Nugroho">Hubungi Saya</a><a class="secondary-button" href="#portfolio">Lihat Portofolio</a></div>
     </section>
-
-    <!-- Projects -->
-    <section id="projects" style="background: rgba(10, 19, 36, 0.3);">
-        <h2 class="section-title">Special Projects</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>Audio To Text CLI</h3>
-                <p>Otomatisasi transkripsi data kualitatif audio skala besar menggunakan Python Speech Recognition.</p>
-                <div class="tags"><span class="tag">Python</span><span class="tag">Automation</span></div>
+    <section id="experience">
+      <h2 class="section-title">Pengalaman Profesional</h2>
+      <div class="exp-container">
+            <div class="exp-item">
+                <span class="exp-date">Sep 2025 – Sekarang</span>
+                <span class="exp-role">Fullstack Developer · Freelance</span>
+                <span class="exp-company">SMAS Islam PB Soedirman 2 Bekasi · Bekasi</span>
+                <ul class="job-detail-list">
+                    <li><strong>School Information System</strong>Mengembangkan sistem informasi sekolah berbasis web menggunakan PHP, MySQL, JavaScript, dan CSS untuk mengelola informasi institusi.</li>
+                    <li><strong>Online Admission System</strong>Membangun sistem pendaftaran peserta didik baru (PPDB) dan modul CRUD untuk mendukung pemrosesan data pendaftaran yang terstruktur.</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Analisis Data COVID-19</h3>
-                <p>Visualisasi tren penyebaran pandemi di Indonesia dengan library Pandas dan Matplotlib.</p>
-                <div class="tags"><span class="tag">Python</span><span class="tag">Data Analysis</span></div>
+            <div class="exp-item">
+                <span class="exp-date">Apr 2025 – Jul 2025</span>
+                <span class="exp-role">IT Administrator · Kontrak</span>
+                <span class="exp-company">Oriskin Indonesia · Jakarta</span>
+                <ul class="job-detail-list">
+                    <li><strong>CRM &amp; Customer Data</strong>Mengelola sistem CRM dan database pelanggan untuk mendukung operasional bisnis sehari-hari.</li>
+                    <li><strong>Administrasi &amp; Pelaporan</strong>Menjaga akurasi data, menyusun informasi dan laporan berkala, serta mengevaluasi kinerja sistem untuk mendukung pengambilan keputusan.</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Quality Assurance Docs</h3>
-                <p>Dokumentasi Test Case dan Test Scenario profesional sesuai standar operasional produk (SOP).</p>
-                <div class="tags"><span class="tag">QA</span><span class="tag">SDLC</span></div>
+            <div class="exp-item">
+                <span class="exp-date">Mar 2024 – Jan 2025</span>
+                <span class="exp-role">Data Analyst · Kontrak</span>
+                <span class="exp-company">PT Borobudur Indonesia Maju · Jakarta</span>
+                <ul class="job-detail-list">
+                    <li><strong>Validasi Data &amp; SQL</strong>Melakukan validasi data dan optimalisasi query SQL pada database pendidik berskala nasional dengan jutaan rekaman, sehingga waktu respons query berkurang sebesar 20%.</li>
+                    <li><strong>Data Integrity</strong>Merancang skema database relasional dan menjaga integritas data melalui praktik pengelolaan data yang aman.</li>
+                </ul>
             </div>
-        </div>
+            <div class="exp-item">
+                <span class="exp-date">Jul 2023 – Okt 2023</span>
+                <span class="exp-role">Sales Engineering · Kontrak</span>
+                <span class="exp-company">PT Global Data Inspirasi · Yogyakarta</span>
+                <ul class="job-detail-list">
+                    <li><strong>Dashboard &amp; Reporting</strong>Mengembangkan dashboard interaktif menggunakan Looker Studio dan Elasticsearch untuk mendukung analisis dan laporan bisnis.</li>
+                    <li><strong>Data Processing &amp; Automation</strong>Mengolah data berskala besar serta mengembangkan skrip otomatisasi Python untuk meningkatkan efisiensi pengumpulan dan pemrosesan data.</li>
+                </ul>
+            </div>
+            <div class="exp-item">
+                <span class="exp-date">Sep 2021 – Nov 2021</span>
+                <span class="exp-role">System Analyst · Magang</span>
+                <span class="exp-company">KSO Terminal Petikemas Koja · Jakarta</span>
+                <ul class="job-detail-list">
+                    <li><strong>E-Questionnaire &amp; Database</strong>Mengembangkan sistem e-questionnaire serta skema database relasional untuk mengumpulkan dan mengelola umpan balik pemangku kepentingan.</li>
+                    <li><strong>Workflow Analysis</strong>Menganalisis alur kerja dan memetakan arus data menggunakan flowchart, flowmap, dan UML untuk mendukung perencanaan sistem billing cadangan.</li>
+                </ul>
+            </div>
+      </div>
+    </section>
+    <section id="skills" class="soft-section">
+      <h2 class="section-title">Kompetensi Utama</h2>
+      <div class="grid-container">
+        <div class="card"><h3>Administrasi & Operasional</h3><p>Dukungan administrasi, pengelolaan dokumen dan arsip, pelaporan berkala, serta koordinasi proyek dan pemangku kepentingan.</p><div class="tags"><span class="tag">Office</span><span class="tag">Reporting</span><span class="tag">Documentation</span></div></div>
+        <div class="card"><h3>Data Management & Analytics</h3><p>Data entry, validasi dan integritas data, database relasional, SQL, serta pembuatan dashboard untuk mendukung keputusan.</p><div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Looker Studio</span></div></div>
+        <div class="card"><h3>Information Systems</h3><p>Analisis alur kerja, pengembangan sistem informasi berbasis web, perancangan database, serta pemahaman kebutuhan pengguna.</p><div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div></div>
+      </div>
+    </section>
+    <section id="education">
+      <h2 class="section-title">Pendidikan</h2>
+      <div class="card education-card"><span class="card-category">2023 · Diploma IV / Sarjana Terapan</span><h3>Teknik Informatika</h3><p>Universitas Logistik Bisnis Internasional</p></div>
+    </section>
+    <!-- Featured work aligned with CV -->
+    <section id="projects" class="soft-section">
+      <h2 class="section-title">Sorotan Proyek</h2>
+      <div class="grid-container">
+        <div class="card"><h3>Sistem Informasi Sekolah & PPDB</h3><p>Pengembangan website institusi dan alur pendaftaran siswa berbasis database.</p><div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div></div>
+        <div class="card"><h3>Operations Intelligence</h3><p>Analisis SLA, forecasting, dan segmentasi untuk mendukung evaluasi kinerja operasional.</p><div class="tags"><span class="tag">Python</span><span class="tag">Analytics</span></div></div>
+        <div class="card"><h3>ATS Matcher & CV Tracer</h3><p>Aplikasi web untuk membantu pencocokan CV dan pencatatan proses lamaran kerja.</p><div class="tags"><span class="tag">Web App</span><span class="tag">Career Tools</span></div></div>
+      </div>
     </section>
 
     <!-- Portfolio (Dashboard & Web Development) -->
@@ -488,14 +436,6 @@
                 <h3>School Information System</h3>
                 <p>Situs web resmi & sistem PPDB online untuk SMAS Islam PB Soedirman 2 Bekasi.</p>
                 <div class="tags" style="margin-bottom: 15px;"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
-                <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
-            </a>
-
-            <a class="card link-card" href="https://www.kliksystem.my.id/" target="_blank" rel="noopener noreferrer">
-                <span class="card-category">Web Development</span>
-                <h3>Klik System</h3>
-                <p>Situs agensi digital untuk pengembangan sistem web kustom & dukungan akademik.</p>
-                <div class="tags" style="margin-bottom: 15px;"><span class="tag">Fullstack</span><span class="tag">Agency</span></div>
                 <span class="visit-link">Kunjungi Situs <i class="fas fa-arrow-right"></i></span>
             </a>
 
@@ -548,6 +488,12 @@
             </a>
 
         </div>
+    </section>
+
+    <!-- Book listed in the submitted CV; URL to be added once verified -->
+    <section id="book-extra" class="soft-section">
+      <h2 class="section-title">Buku Lainnya</h2>
+      <div class="grid-container"><div class="card"><span class="card-category">Buku · Literasi Digital</span><h3>TIK Tanpa Takut</h3><p>Publikasi buku yang tercantum pada CV. Tautan Google Play Books dapat ditambahkan setelah URL spesifik diverifikasi.</p><div class="tags"><span class="tag">Literasi Digital</span><span class="tag">Buku</span></div></div></div>
     </section>
 
     <!-- Certificates -->
@@ -626,10 +572,11 @@
         // Logika Popup
         const popup = document.getElementById('welcomePopup');
         function closePopup() { 
+            if (popup.style.display === 'none') return;
             popup.style.opacity = '0';
             setTimeout(() => { popup.style.display = 'none'; }, 500);
         }
-        setTimeout(closePopup, 30000);
+        setTimeout(closePopup, 5000);
 
         // Efek hover cahaya (Glow Effect) untuk cards
         document.querySelectorAll('.card').forEach(card => {
